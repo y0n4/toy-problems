@@ -1,2 +1,2 @@
 # toy-problems
-a place for me to practice toy problems!
+A place for me to practice toy problems!
