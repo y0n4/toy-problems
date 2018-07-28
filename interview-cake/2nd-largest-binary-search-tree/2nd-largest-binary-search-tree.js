@@ -39,19 +39,19 @@ function findSecondLargest(rootNode) {
 
    while (current) { //loop through tree
 
-    //if node doesn't have right node but only left node
+    // case: current is highest value atm because no more right nodes but has left node
     if (current.left && !current.right) {
-      // the node is highest value atm
-      return findLargest(current.left); // 2nd highest val is in the left node
+      //search for 2nd highest in left node
+      return findLargest(current.left);
     }
 
-     // current is parent of highest value atm
-      // case: current is parent of largest, and largest has no children, so current is 2nd largest
-     if (current.right && !current.right.left && !current.right.right) {
-       return current.value;
-     }
+    // case: current is parent of highest value because current has right node but that right node does not have any children
+    if (current.right && !current.right.left && !current.right.right) {
+      // 2nd highest value is parent
+      return current.value;
+    }
 
-     // set current to right node (loop through right nodes)
+     // keep looping through right nodes
      current = current.right;
    }
 }
