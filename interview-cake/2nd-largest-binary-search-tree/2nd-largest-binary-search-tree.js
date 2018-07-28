@@ -3,9 +3,11 @@ Write a function to find the 2nd largest element in a binary search tree
 
 note: binary search tree has nodes where left node is less than the parent value and right node is greater than parent value
 
-  (4)
-  / \
-(1) (3)
+    (4)
+    / \
+  (2) (8)
+      / \
+    (5) (10)
 
 o >> number
 i >> binary search tree
