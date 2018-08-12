@@ -174,4 +174,36 @@ function BinarySearchTree() {
     recurse(this.root);
     return nodes;
   }
+
+  //breadth first search >> tree traversal method that explores the nodes on that level before continuing the next level
+  this.levelOrder = () => {
+    var nodes = [];
+    var queue = [this.root]; //add root node to the queue
+    if (!this.root) return null; //edge case
+
+    while (queue.length) { //as long there's element in queue
+      var currentNode = queue[0]; //set currentNode to first element of queue
+      nodes.push(currentNode.value); //add value to nodes
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+      queue.shift(); //dequeue once to focus next node
+    }
+    return nodes; //when there are no more elements in queue display nodes
+  }
+
+  //breadth first search with right to left
+  this.reverseLevelOrder = () => {
+    var nodes = [];
+    var queue = [this.root];
+    if (!this.root) return null;
+
+    while (queue.length) {
+      var currentNode = queue[0];
+      nodes.push(currentNode.value);
+      if (currentNode.right) queue.push(currentNode.right);
+      if (currentNode.left) queue.push(currentNode.left);
+      queue.shift();
+    }
+    return nodes;
+  }
 }
