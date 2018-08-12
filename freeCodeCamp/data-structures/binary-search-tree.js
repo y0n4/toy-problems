@@ -134,15 +134,16 @@ function BinarySearchTree() {
 
     function recurse(node) {
       if(node) {
-        recurse(node.left);
-        nodes.push(node.value);
-        recurse(node.right);
+        recurse(node.left); //traverse left subtree by recursively calling
+        nodes.push(node.value); //diplsay current node
+        recurse(node.right); //traverse right subtree by recursively calling
       }
     }
     recurse(this.root);
     return nodes;
   }
 
+  //explore all roots before the leaves
   this.preorder = () => {
     var nodes = [];
     if(!this.root) return null;
@@ -158,7 +159,19 @@ function BinarySearchTree() {
     return nodes;
   }
 
+  //explore all leaves before the roots
   this.postorder = () => {
-    
+    var nodes = [];
+    if (!this.root) return null;
+
+    function recurse(node) {
+      if(node) {
+        recurse(node.left);
+        recurse(node.right)
+        nodes.push(node.value);
+      }
+    }
+    recurse(this.root);
+    return nodes;
   }
 }
