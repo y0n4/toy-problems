@@ -206,4 +206,41 @@ function BinarySearchTree() {
     }
     return nodes;
   }
+
+  this.remove = (value) => {
+    var parentNode;
+    var currentNode = this.root;
+
+    //create a function that finds the desired node to delete
+    var checkNode = function(value) {
+      while (currentNode !== null) {
+        if (currentNode.value === value) {
+          return true; 
+        } else if (currentNode.value < value) {
+          parentNode = currentNode;
+          currentNode = currentNode.right; 
+        } else if (currentNode.value > value) {
+          parentNode = currentNode;
+          currentNode = currentNode.left;
+        }
+      }
+      return false; //when node reached to null
+    }
+    
+    var isPresent = checkNode(value); 
+    
+    //if node is not present
+    if(!isPresent) return null;
+
+    if (!this.root.right && !this.root.right) this.root = null;
+
+    if (isPresent) {
+      if(!parentNode) return null;
+      else {
+        currentNode = null;
+        if(parentNode.value > value) parentNode.left = currentNode;
+        else parentNode.right = currentNode;
+      }
+    }
+  }
 }
