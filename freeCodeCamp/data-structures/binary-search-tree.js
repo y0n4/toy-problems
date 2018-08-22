@@ -243,4 +243,20 @@ function BinarySearchTree() {
       }
     }
   }
+
+  //invert tree (mirror the tree)
+  this.invert = () => {
+    if(!this.root) return null;
+
+    function recurse(tree) {
+      //change the direction of the pointers
+      var temp = tree.left;
+      tree.left = tree.right;
+      tree.right = temp;
+      
+      if(tree.left) recurse(tree.left);
+      if(tree.right) recursie(tree.right);
+    }
+    recurse(this.root);
+  }
 }
